@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - Les 7 types de problèmes rentables</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .quiz-header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #9b59b6 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .quiz-card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .quiz-card-header {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      border-radius: 10px 10px 0 0 !important;
+    }
+
+    .option-btn {
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .option-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .correct {
+      background-color: #d4edda !important;
+      border-color: #c3e6cb !important;
+      color: #155724 !important;
+    }
+
+    .incorrect {
+      background-color: #f8d7da !important;
+      border-color: #f5c6cb !important;
+      color: #721c24 !important;
+    }
+
+    .correct-answer {
+      background-color: #d4edda;
+      border-left: 4px solid #28a745;
+      padding: 0.5rem;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .progress {
+      height: 10px;
+    }
+
+    .result-card {
+      border-left: 5px solid var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      .quiz-header {
+        padding: 2rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="quiz-header">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold mb-3">Quiz - Les 7 types de problèmes rentables</h1>
+      <p class="lead mb-4">Testez votre connaissance des problèmes qui créent les meilleures opportunités business</p>
+    </div>
+  </header>
+
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card quiz-card">
+          <div class="card-header quiz-card-header d-flex align-items-center">
+            <i class="bi bi-question-circle me-2"></i>
+            <h5 class="mb-0">Questionnaire complet</h5>
+          </div>
+          <div class="card-body">
+            <div id="quiz-intro">
+              <p>Ce quiz complet de 40 questions couvre en profondeur les 7 types de problèmes qui peuvent devenir des opportunités business rentables :</p>
+              <ol>
+                <li>Problèmes douloureux</li>
+                <li>Problèmes urgents</li>
+                <li>Problèmes récurrents</li>
+                <li>Problèmes coûteux</li>
+                <li>Problèmes complexes</li>
+                <li>Problèmes collectifs</li>
+                <li>Problèmes tabous</li>
+              </ol>
+              <p><strong>Instructions :</strong></p>
+              <ul>
+                <li>40 questions à choix multiples</li>
+                <li>Une seule réponse correcte par question</li>
+                <li>Explications détaillées après chaque réponse</li>
+                <li>Résultats finaux avec analyse par catégorie</li>
+              </ul>
+              <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary btn-lg" onclick="startQuiz()">
+                  <i class="bi bi-play-fill me-1"></i>Commencer le quiz
+                </button>
+              </div>
+            </div>
+
+            <div id="quiz-container" style="display: none;">
+              <div class="d-flex justify-content-between mb-3">
+                <span id="question-counter">Question 1/40</span>
+                <span id="score-counter">Score: 0/40</span>
+              </div>
+              
+              <div class="progress mb-3">
+                <div id="quiz-progress" class="progress-bar" role="progressbar" style="width: 0%"></div>
+              </div>
+              
+              <div id="question-container" class="mb-4">
+                <h4 id="question-text" class="mb-4"></h4>
+                <div id="options-container" class="list-group"></div>
+              </div>
+              
+              <div id="feedback-container" class="alert mb-3" style="display: none;"></div>
+              
+              <div class="d-grid gap-2">
+                <button id="next-btn" class="btn btn-primary" onclick="nextQuestion()" style="display: none;">
+                  <i class="bi bi-arrow-right me-1"></i>Question suivante
+                </button>
+              </div>
+            </div>
+
+            <div id="results-container" style="display: none;">
+              <div class="card result-card mb-4">
+                <div class="card-body">
+                  <h4 class="card-title mb-3">Résultats du quiz</h4>
+                  <div id="result-message" class="alert mb-4"></div>
+                  <h5 class="mb-3">Analyse par catégorie :</h5>
+                  <div id="category-results"></div>
+                </div>
+              </div>
+              
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-primary" onclick="resetQuiz()">
+                  <i class="bi bi-arrow-repeat me-1"></i>Refaire le quiz
+                </button>
+                <a href="index.html" class="btn btn-secondary">
+                  <i class="bi bi-arrow-left me-1"></i>Retour à la page principale
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-3">
+    <div class="container text-center">
+      <p class="mb-0">Quiz - Les 7 types de problèmes rentables</p>
+      <p class="mb-0">© 2023 - Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Variables du quiz
+    let currentQuestion = 0;
+    let score = 0;
+    let categoryScores = {
+      'douloureux': { correct: 0, total: 0 },
+      'urgents': { correct: 0, total: 0 },
+      'recurrents': { correct: 0, total: 0 },
+      'couteux': { correct: 0, total: 0 },
+      'complexes': { correct: 0, total: 0 },
+      'collectifs': { correct: 0, total: 0 },
+      'tabous': { correct: 0, total: 0 }
+    };
+    
+    // Questions du quiz (40 questions)
+    const quizQuestions = [
+      // Problèmes douloureux (6 questions)
+      {
+        question: "Quel type de problème provoque une souffrance physique ou émotionnelle intense?",
+        options: [
+          "Problèmes urgents",
+          "Problèmes douloureux",
+          "Problèmes tabous",
+          "Problèmes collectifs"
+        ],
+        answer: 1,
+        explanation: "Les problèmes douloureux (comme les douleurs chroniques ou le stress intense) créent un besoin fort de solution immédiate.",
+        category: "douloureux"
+      },
+      {
+        question: "Quel élément est crucial pour commercialiser une solution à un problème douloureux?",
+        options: [
+          "Emballage attractif",
+          "Écoute empathique et preuves tangibles",
+          "Options de paiement multiples",
+          "Disponibilité en magasin physique"
+        ],
+        answer: 1,
+        explanation: "Pour les problèmes qui causent une souffrance réelle, les clients doivent sentir que vous comprenez leur douleur et que votre solution apporte un soulagement mesurable.",
+        category: "douloureux"
+      },
+      {
+        question: "Quel business model fonctionne bien pour les problèmes douloureux liés à la santé?",
+        options: [
+          "Publicité contextuelle",
+          "Abonnement + vente de dispositifs",
+          "Sponsoring par des célébrités",
+          "Modèle entièrement gratuit"
+        ],
+        answer: 1,
+        explanation: "La combinaison d'un produit physique (dispositif médical) et d'un service récurrent (abonnement) permet de maximiser la valeur client.",
+        category: "douloureux"
+      },
+      {
+        question: "Quel est un exemple de problème douloureux dans le domaine professionnel?",
+        options: [
+          "Choix limité de fournisseurs",
+          "Burn-out et charge mentale",
+          "Couleur des uniformes",
+          "Horaires de réunion"
+        ],
+        answer: 1,
+        explanation: "Le burn-out est un problème douloureux qui affecte gravement la qualité de vie et la productivité des travailleurs.",
+        category: "douloureux"
+      },
+      {
+        question: "Pourquoi les problèmes douloureux permettent-ils des marges élevées?",
+        options: [
+          "Les clients comparent moins les prix",
+          "La demande est saisonnière",
+          "Les solutions sont simples à produire",
+          "La concurrence est toujours faible"
+        ],
+        answer: 0,
+        explanation: "Quand la douleur est intense, les clients sont prêts à payer un prix élevé pour une solution efficace et comparent moins les alternatives.",
+        category: "douloureux"
+      },
+      {
+        question: "Quelle stratégie marketing est la plus efficace pour les problèmes douloureux?",
+        options: [
+          "Promotions fréquentes",
+          "Témoignages vidéo de clients satisfaits",
+          "Sponsoring d'événements sportifs",
+          "Publicité virale humoristique"
+        ],
+        answer: 1,
+        explanation: "Les témoignages authentiques montrant le soulagement apporté par la solution sont très convaincants pour ce type de problèmes.",
+        category: "douloureux"
+      },
+
+      // Problèmes urgents (6 questions)
+      {
+        question: "Quelle est la caractéristique principale des problèmes urgents?",
+        options: [
+          "Ils affectent beaucoup de personnes",
+          "Ils nécessitent une action immédiate",
+          "Ils sont complexes à résoudre",
+          "Ils sont liés à des tabous sociaux"
+        ],
+        answer: 1,
+        explanation: "Les problèmes urgents créent une situation de stress où le client est prêt à payer une prime pour une solution rapide.",
+        category: "urgents"
+      },
+      {
+        question: "Quel type de service répond typiquement à un problème urgent?",
+        options: [
+          "Formation en ligne",
+          "Dépannage 24h/24",
+          "Conseil stratégique",
+          "Design d'intérieur"
+        ],
+        answer: 1,
+        explanation: "Les services de dépannage répondent à des besoins urgents comme les pannes informatiques ou les fuites d'eau.",
+        category: "urgents"
+      },
+      {
+        question: "Comment optimiser la tarification pour les problèmes urgents?",
+        options: [
+          "Forfait préventif + tarif urgent majoré",
+          "Prix fixe toute l'année",
+          "Première intervention gratuite",
+          "Tarif dégressif avec le volume"
+        ],
+        answer: 0,
+        explanation: "Les forfaits préventifs créent un revenu récurrent, tandis que les tarifs urgents majorés capturent la valeur de l'urgence.",
+        category: "urgents"
+      },
+      {
+        question: "Quel est l'avantage concurrentiel clé pour un service urgent?",
+        options: [
+          "Design moderne",
+          "Rapidité de réponse garantie",
+          "Large gamme de services",
+          "Prix les plus bas du marché"
+        ],
+        answer: 1,
+        explanation: "Dans les situations urgentes, la rapidité de réponse est le critère de choix principal des clients.",
+        category: "urgents"
+      },
+      {
+        question: "Quel secteur profite particulièrement des problèmes urgents?",
+        options: [
+          "L'immobilier de luxe",
+          "La santé télématique",
+          "Les services IT d'urgence",
+          "La mode éphémère"
+        ],
+        answer: 2,
+        explanation: "Les pannes informatiques qui paralysent les entreprises créent un besoin urgent de dépannage rapide.",
+        category: "urgents"
+      },
+      {
+        question: "Comment convertir les clients urgents en clients récurrents?",
+        options: [
+          "Leur offrir des cadeaux",
+          "Leur proposer des forfaits préventifs",
+          "Baisser les prix après la première intervention",
+          "Leur envoyer des newsletters"
+        ],
+        answer: 1,
+        explanation: "Les forfaits préventifs permettent de transformer une relation ponctuelle en relation durable.",
+        category: "urgents"
+      },
+
+      // Problèmes récurrents (6 questions)
+      {
+        question: "Quel modèle économique fonctionne particulièrement bien pour les problèmes récurrents?",
+        options: [
+          "Vente unique de produit",
+          "Abonnement mensuel",
+          "Paiement à l'usage",
+          "Publicité"
+        ],
+        answer: 1,
+        explanation: "Les problèmes qui se répètent se prêtent bien aux modèles d'abonnement qui fournissent une solution continue.",
+        category: "recurrents"
+      },
+      {
+        question: "Quel est un exemple typique de problème récurrent en entreprise?",
+        options: [
+          "Choix d'un nouveau logo",
+          "Gestion des factures fournisseurs",
+          "Déménagement du siège social",
+          "Recrutement du PDG"
+        ],
+        answer: 1,
+        explanation: "La gestion des factures est une tâche administrative récurrente qui peut être automatisée ou externalisée.",
+        category: "recurrents"
+      },
+      {
+        question: "Quelle technologie est particulièrement utile pour résoudre les problèmes récurrents?",
+        options: [
+          "Réalité virtuelle",
+          "Automatisation (RPA, Zapier)",
+          "Impressions 3D",
+          "Cryptomonnaies"
+        ],
+        answer: 1,
+        explanation: "Les outils d'automatisation permettent d'éliminer les tâches répétitives qui constituent des problèmes récurrents.",
+        category: "recurrents"
+      },
+      {
+        question: "Pourquoi les solutions aux problèmes récurrents ont-elles une forte valeur perçue?",
+        options: [
+          "Elles sont visuellement impressionnantes",
+          "Elles libèrent du temps et réduisent la charge mentale",
+          "Elles permettent d'impressionner ses amis",
+          "Elles nécessitent peu d'engagement"
+        ],
+        answer: 1,
+        explanation: "En éliminant des tâches répétitives fastidieuses, ces solutions améliorent significativement la qualité de vie.",
+        category: "recurrents"
+      },
+      {
+        question: "Quel est un indicateur clé pour identifier un problème récurrent?",
+        options: [
+          "Les gens en parlent souvent dans les médias",
+          "Les gens râlent fréquemment sur la même chose",
+          "Le problème ne survient qu'une fois par an",
+          "Le problème nécessite une expertise rare"
+        ],
+        answer: 1,
+        explanation: "Les plaintes répétées sur les mêmes points sont un bon indicateur de problèmes récurrents non résolus.",
+        category: "recurrents"
+      },
+      {
+        question: "Comment améliorer la rétention pour un service résolvant un problème récurrent?",
+        options: [
+          "Faire régulièrement des promotions",
+          "Démontrer continuellement la valeur apportée",
+          "Changer fréquemment l'interface",
+          "Limiter les fonctionnalités"
+        ],
+        answer: 1,
+        explanation: "En montrant régulièrement comment le service continue de résoudre le problème, on renforce l'engagement des clients.",
+        category: "recurrents"
+      },
+
+      // Problèmes coûteux (5 questions)
+      {
+        question: "Quel élément est crucial pour vendre une solution à un problème coûteux?",
+        options: [
+          "Design élégant",
+          "Calcul ROI clair",
+          "Célébrités qui l'utilisent",
+          "Options de personnalisation"
+        ],
+        answer: 1,
+        explanation: "Pour les problèmes qui font perdre de l'argent, il faut prouver par des chiffres que votre solution permet des économies mesurables.",
+        category: "couteux"
+      },
+      {
+        question: "Quel type de problème coûteux est souvent négligé par les PME?",
+        options: [
+          "Gaspillage énergétique",
+          "Couleur des murs",
+          "Nom de l'entreprise",
+          "Style des uniformes"
+        ],
+        answer: 0,
+        explanation: "Les gaspillages énergétiques représentent souvent des coûts importants mais peu visibles pour les PME.",
+        category: "couteux"
+      },
+      {
+        question: "Quelle technologie aide à résoudre les problèmes coûteux liés aux équipements?",
+        options: [
+          "Maintenance prédictive avec IoT",
+          "Réalité augmentée",
+          "Chatbots",
+          "Blockchain"
+        ],
+        answer: 0,
+        explanation: "Les capteurs IoT permettent d'anticiper les pannes avant qu'elles ne génèrent des coûts importants.",
+        category: "couteux"
+      },
+      {
+        question: "Quel argument convainc le mieux pour une solution à un problème coûteux?",
+        options: [
+          "Notre solution est la moins chère",
+          "Notre solution vous fera économiser X€ par an",
+          "Notre solution est la plus populaire",
+          "Notre solution a le meilleur design"
+        ],
+        answer: 1,
+        explanation: "Des économies chiffrées sont le meilleur argument pour convaincre sur les problèmes coûteux.",
+        category: "couteux"
+      },
+      {
+        question: "Quel secteur bénéficie le plus des solutions aux problèmes coûteux?",
+        options: [
+          "Industrie manufacturière",
+          "Art contemporain",
+          "Influenceurs sociaux",
+          "Édition de livres"
+        ],
+        answer: 0,
+        explanation: "L'industrie manufacturière a de nombreux coûts cachés (énergie, maintenance, stocks) qui peuvent être optimisés.",
+        category: "couteux"
+      },
+
+      // Problèmes complexes (5 questions)
+      {
+        question: "Quel type de problème nécessite généralement une expertise technique avancée?",
+        options: [
+          "Problèmes douloureux",
+          "Problèmes complexes",
+          "Problèmes urgents",
+          "Problèmes tabous"
+        ],
+        answer: 1,
+        explanation: "Les problèmes complexes demandent souvent des solutions technologiques sophistiquées.",
+        category: "complexes"
+      },
+      {
+        question: "Quel est un exemple de problème complexe en logistique?",
+        options: [
+          "Choix des uniformes des chauffeurs",
+          "Optimisation des routes de livraison",
+          "Couleur des camions",
+          "Musique dans les entrepôts"
+        ],
+        answer: 1,
+        explanation: "L'optimisation des routes est un problème complexe qui peut faire économiser des millions.",
+        category: "complexes"
+      },
+      {
+        question: "Pourquoi les problèmes complexes créent-ils des barrières à l'entrée?",
+        options: [
+          "Ils nécessitent peu d'investissement",
+          "Ils demandent une expertise rare",
+          "Ils intéressent trop de concurrents",
+          "Ils sont simples à copier"
+        ],
+        answer: 1,
+        explanation: "L'expertise nécessaire pour résoudre des problèmes complexes limite naturellement le nombre de concurrents.",
+        category: "complexes"
+      },
+      {
+        question: "Comment commercialiser une solution complexe?",
+        options: [
+          "En simplifiant son explication",
+          "En utilisant beaucoup de jargon technique",
+          "En cachant sa complexité",
+          "En la présentant comme magique"
+        ],
+        answer: 0,
+        explanation: "Il faut rendre la valeur de la solution compréhensible même si la technologie sous-jacente est complexe.",
+        category: "complexes"
+      },
+      {
+        question: "Quel modèle économique fonctionne bien pour les solutions complexes?",
+        options: [
+          "Licence logicielle payante",
+          "Publicité contextuelle",
+          "Vente au détail",
+          "Sponsoring sportif"
+        ],
+        answer: 0,
+        explanation: "Les licences logicielles permettent de monétiser durablement des solutions technologiques complexes.",
+        category: "complexes"
+      },
+
+      // Problèmes collectifs (6 questions)
+      {
+        question: "Quelle est une caractéristique des problèmes collectifs?",
+        options: [
+          "Ils touchent une seule personne à la fois",
+          "Ils affectent des millions de personnes",
+          "Ils sont toujours simples à résoudre",
+          "Ils rapportent peu d'argent"
+        ],
+        answer: 1,
+        explanation: "Les problèmes collectifs ont un impact social large et peuvent attirer des financements publics.",
+        category: "collectifs"
+      },
+      {
+        question: "Quel type de problème est illustré par une entreprise qui développe un filtre à eau low-cost?",
+        options: [
+          "Problème urgent",
+          "Problème collectif",
+          "Problème douloureux",
+          "Problème récurrent"
+        ],
+        answer: 1,
+        explanation: "L'accès à l'eau potable est un problème collectif qui affecte des populations entières.",
+        category: "collectifs"
+      },
+      {
+        question: "Quel type de financement est important pour les solutions aux problèmes collectifs?",
+        options: [
+          "Subventions publiques",
+          "Prêts personnels",
+          "Cryptomonnaies",
+          "Ventes flash"
+        ],
+        answer: 0,
+        explanation: "Les subventions publiques complètent souvent les revenus commerciaux pour les solutions à impact social.",
+        category: "collectifs"
+      },
+      {
+        question: "Quel est un exemple de problème collectif moderne?",
+        options: [
+          "Inégalités d'accès au numérique",
+          "Manque de voitures de luxe",
+          "Choix limité de restaurants gastronomiques",
+          "Couleur des smartphones"
+        ],
+        answer: 0,
+        explanation: "La fracture numérique est un problème collectif important dans la société moderne.",
+        category: "collectifs"
+      },
+      {
+        question: "Comment mesurer l'impact d'une solution à un problème collectif?",
+        options: [
+          "Seulement par les profits",
+          "Par des indicateurs sociaux et financiers",
+          "Par le nombre de likes sur les réseaux",
+          "Par la taille du bureau de l'entreprise"
+        ],
+        answer: 1,
+        explanation: "Les solutions aux problèmes collectifs doivent évaluer à la fois leur impact social et leur viabilité financière.",
+        category: "collectifs"
+      },
+      {
+        question: "Quel modèle économique innovant fonctionne pour les problèmes collectifs?",
+        options: [
+          "Buy one give one",
+          "Vente exclusive aux riches",
+          "Produit ultra-luxe",
+          "Abonnement caché"
+        ],
+        answer: 0,
+        explanation: "Le modèle 'buy one give one' (achetez un produit, nous en donnons un) est adapté aux problèmes collectifs.",
+        category: "collectifs"
+      },
+
+      // Problèmes tabous (6 questions)
+      {
+        question: "Pourquoi les problèmes tabous représentent-ils une opportunité business?",
+        options: [
+          "Ils sont faciles à résoudre",
+          "Ils sont souvent sous-estimés par le marché",
+          "Ils nécessitent peu d'investissement",
+          "Tout le monde en parle ouvertement"
+        ],
+        answer: 1,
+        explanation: "Les problèmes tabous sont souvent ignorés par les entreprises traditionnelles, créant ainsi des 'océans bleus'.",
+        category: "tabous"
+      },
+      {
+        question: "Quel est un exemple de problème tabou dans le domaine de la santé?",
+        options: [
+          "Douleurs menstruelles",
+          "Rhume des foins",
+          "Maux de gorge",
+          "Petits bobos"
+        ],
+        answer: 0,
+        explanation: "Les douleurs menstruelles ont longtemps été un sujet tabou malgré leur impact sur la vie des femmes.",
+        category: "tabous"
+      },
+      {
+        question: "Quelle approche marketing est cruciale pour les problèmes tabous?",
+        options: [
+          "Publicité agressive",
+          "Discrétion et respect",
+          "Humour grossier",
+          "Sponsoring de stars"
+        ],
+        answer: 1,
+        explanation: "Le marketing doit aborder ces sujets avec sensibilité et respect pour la vie privée des clients.",
+        category: "tabous"
+      },
+      {
+        question: "Quel canal de distribution est souvent utilisé pour les solutions aux problèmes tabous?",
+        options: [
+          "Vente en ligne discrète",
+          "Grands magasins bruyants",
+          "Événements publics",
+          "Télévision nationale"
+        ],
+        answer: 0,
+        explanation: "La vente en ligne permet une discrétion essentielle pour aborder des sujets tabous.",
+        category: "tabous"
+      },
+      {
+        question: "Quel est un avantage des marchés tabous?",
+        options: [
+          "Concurrence féroce",
+          "Peu de concurrents établis",
+          "Clients très exigeants",
+          "Réglementation légère"
+        ],
+        answer: 1,
+        explanation: "Comme peu d'entreprises osent s'y attaquer, les marchés tabous offrent souvent peu de concurrence.",
+        category: "tabous"
+      },
+      {
+        question: "Comment construire la confiance pour une solution à un problème tabou?",
+        options: [
+          "Avec des avis médicaux anonymisés",
+          "En criant plus fort que les autres",
+          "En imitant les grandes marques",
+          "En évitant toute explication"
+        ],
+        answer: 0,
+        explanation: "Des témoignages et avis d'experts anonymisés peuvent aider à construire la confiance discrètement.",
+        category: "tabous"
+      }
+    ];
+
+    // Fonctions du quiz
+    function startQuiz() {
+      // Mélanger les questions pour un ordre aléatoire
+      shuffleArray(quizQuestions);
+      
+      document.getElementById('quiz-intro').style.display = 'none';
+      document.getElementById('quiz-container').style.display = 'block';
+      showQuestion();
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function showQuestion() {
+      const questionObj = quizQuestions[currentQuestion];
+      
+      // Mettre à jour les compteurs
+      document.getElementById('question-counter').textContent = `Question ${currentQuestion + 1}/${quizQuestions.length}`;
+      document.getElementById('score-counter').textContent = `Score: ${score}/${quizQuestions.length}`;
+      document.getElementById('quiz-progress').style.width = `${((currentQuestion) / quizQuestions.length) * 100}%`;
+      
+      // Afficher la question
+      document.getElementById('question-text').textContent = questionObj.question;
+      
+      // Afficher les options
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+      
+      questionObj.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'list-group-item list-group-item-action option-btn';
+        button.textContent = option;
+        button.onclick = () => selectAnswer(index);
+        optionsContainer.appendChild(button);
+      });
+      
+      // Cacher le feedback et le bouton suivant
+      document.getElementById('feedback-container').style.display = 'none';
+      document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function selectAnswer(selectedIndex) {
+      const questionObj = quizQuestions[currentQuestion];
+      const feedbackContainer = document.getElementById('feedback-container');
+      const options = document.querySelectorAll('#options-container button');
+      
+      // Désactiver tous les boutons
+      options.forEach(option => {
+        option.disabled = true;
+      });
+      
+      // Marquer la bonne réponse en vert
+      options[questionObj.answer].classList.add('correct');
+      
+      // Si mauvaise réponse, marquer la sélection en rouge
+      if (selectedIndex !== questionObj.answer) {
+        options[selectedIndex].classList.add('incorrect');
+        feedbackContainer.innerHTML = `
+          <i class="bi bi-x-circle-fill me-2"></i><strong>Incorrect.</strong> ${questionObj.explanation}
+        `;
+        feedbackContainer.className = 'alert alert-danger';
+      } else {
+        score++;
+        categoryScores[questionObj.category].correct++;
+        document.getElementById('score-counter').textContent = `Score: ${score}/${quizQuestions.length}`;
+        feedbackContainer.innerHTML = `
+          <i class="bi bi-check-circle-fill me-2"></i><strong>Correct!</strong> ${questionObj.explanation}
+        `;
+        feedbackContainer.className = 'alert alert-success';
+      }
+      
+      // Compter la question pour la catégorie
+      categoryScores[questionObj.category].total++;
+      
+      feedbackContainer.style.display = 'block';
+      document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      
+      if (currentQuestion < quizQuestions.length) {
+        showQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      const percentage = Math.round((score / quizQuestions.length) * 100);
+      let message = '';
+      
+      if (percentage >= 90) {
+        message = `<i class="bi bi-emoji-laughing-fill me-2"></i> <strong>Exceptionnel!</strong> Vous maîtrisez parfaitement les 7 types de problèmes rentables.`;
+      } else if (percentage >= 70) {
+        message = `<i class="bi bi-emoji-smile-fill me-2"></i> <strong>Très bien!</strong> Vous avez une excellente compréhension des problèmes rentables.`;
+      } else if (percentage >= 50) {
+        message = `<i class="bi bi-emoji-neutral-fill me-2"></i> <strong>Pas mal!</strong> Vous connaissez les bases mais pouvez encore progresser.`;
+      } else {
+        message = `<i class="bi bi-emoji-frown-fill me-2"></i> <strong>À travailler!</strong> Consultez à nouveau les 7 types de problèmes pour mieux les identifier.`;
+      }
+      
+      // Afficher les résultats principaux
+      document.getElementById('quiz-container').style.display = 'none';
+      document.getElementById('results-container').style.display = 'block';
+      
+      document.getElementById('result-message').innerHTML = `
+        <p>Vous avez obtenu <strong>${score} bonnes réponses</strong> sur ${quizQuestions.length} (${percentage}%)</p>
+        <p class="mb-0">${message}</p>
+      `;
+      
+      // Afficher l'analyse par catégorie
+      const categoryResults = document.getElementById('category-results');
+      categoryResults.innerHTML = '';
+      
+      for (const [category, data] of Object.entries(categoryScores)) {
+        if (data.total > 0) { // Ne montrer que les catégories avec des questions
+          const catPercentage = Math.round((data.correct / data.total) * 100);
+          let catName;
+          
+          switch(category) {
+            case 'douloureux': catName = 'Problèmes douloureux'; break;
+            case 'urgents': catName = 'Problèmes urgents'; break;
+            case 'recurrents': catName = 'Problèmes récurrents'; break;
+            case 'couteux': catName = 'Problèmes coûteux'; break;
+            case 'complexes': catName = 'Problèmes complexes'; break;
+            case 'collectifs': catName = 'Problèmes collectifs'; break;
+            case 'tabous': catName = 'Problèmes tabous'; break;
+          }
+          
+          const progressBar = `
+            <div class="mb-3">
+              <h6>${catName} <small class="text-muted">(${data.correct}/${data.total})</small></h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: ${catPercentage}%" 
+                  aria-valuenow="${catPercentage}" aria-valuemin="0" aria-valuemax="100">
+                  ${catPercentage}%
+                </div>
+              </div>
+            </div>
+          `;
+          
+          categoryResults.innerHTML += progressBar;
+        }
+      }
+    }
+
+    function resetQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      
+      // Réinitialiser les scores par catégorie
+      for (const category in categoryScores) {
+        categoryScores[category].correct = 0;
+        categoryScores[category].total = 0;
+      }
+      
+      document.getElementById('results-container').style.display = 'none';
+      document.getElementById('quiz-container').style.display = 'none';
+      document.getElementById('quiz-intro').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
