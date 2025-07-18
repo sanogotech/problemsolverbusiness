@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les 7 types de problèmes à résoudre pour devenir riche</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --problem1: #8e44ad;
+      --problem2: #3498db;
+      --problem3: #27ae60;
+      --problem4: #f39c12;
+      --problem5: #e74c3c;
+      --problem6: #1abc9c;
+      --problem7: #9b59b6;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: white;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--problem7) 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .card-header {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+    }
+
+    .problem1-card .card-header {
+      background-color: var(--problem1);
+    }
+
+    .problem2-card .card-header {
+      background-color: var(--problem2);
+    }
+
+    .problem3-card .card-header {
+      background-color: var(--problem3);
+    }
+
+    .problem4-card .card-header {
+      background-color: var(--problem4);
+    }
+
+    .problem5-card .card-header {
+      background-color: var(--problem5);
+    }
+
+    .problem6-card .card-header {
+      background-color: var(--problem6);
+    }
+
+    .problem7-card .card-header {
+      background-color: var(--problem7);
+    }
+
+    .problem-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-problem1 {
+      background-color: var(--problem1);
+      color: white;
+    }
+
+    .btn-problem1:hover {
+      background-color: #7d3c98;
+      color: white;
+    }
+
+    .btn-problem2 {
+      background-color: var(--problem2);
+      color: white;
+    }
+
+    .btn-problem2:hover {
+      background-color: #2980b9;
+      color: white;
+    }
+
+    .btn-problem3 {
+      background-color: var(--problem3);
+      color: white;
+    }
+
+    .btn-problem3:hover {
+      background-color: #219955;
+      color: white;
+    }
+
+    .btn-problem4 {
+      background-color: var(--problem4);
+      color: white;
+    }
+
+    .btn-problem5 {
+      background-color: var(--problem5);
+      color: white;
+    }
+
+    .btn-problem6 {
+      background-color: var(--problem6);
+      color: white;
+    }
+
+    .btn-problem7 {
+      background-color: var(--problem7);
+      color: white;
+    }
+
+    .highlight-box {
+      background-color: rgba(142, 68, 173, 0.1);
+      border-left: 4px solid var(--problem1);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .problem2-highlight {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-left: 4px solid var(--problem2);
+    }
+
+    .problem3-highlight {
+      background-color: rgba(39, 174, 96, 0.1);
+      border-left: 4px solid var(--problem3);
+    }
+
+    .problem4-highlight {
+      background-color: rgba(243, 156, 18, 0.1);
+      border-left: 4px solid var(--problem4);
+    }
+
+    .problem5-highlight {
+      background-color: rgba(231, 76, 60, 0.1);
+      border-left: 4px solid var(--problem5);
+    }
+
+    .problem6-highlight {
+      background-color: rgba(26, 188, 156, 0.1);
+      border-left: 4px solid var(--problem6);
+    }
+
+    .problem7-highlight {
+      background-color: rgba(155, 89, 182, 0.1);
+      border-left: 4px solid var(--problem7);
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 20px;
+    }
+
+    .process-step:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background-color: var(--problem1);
+      border-radius: 50%;
+    }
+
+    .process-step:after {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 20px;
+      width: 2px;
+      height: 100%;
+      background-color: var(--problem1);
+    }
+
+    .process-step:last-child:after {
+      display: none;
+    }
+
+    /* Animation pour les cartes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .problem-card {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    /* Délai d'animation pour chaque carte */
+    .problem-card:nth-child(1) { animation-delay: 0.1s; }
+    .problem-card:nth-child(2) { animation-delay: 0.2s; }
+    .problem-card:nth-child(3) { animation-delay: 0.3s; }
+    .problem-card:nth-child(4) { animation-delay: 0.4s; }
+    .problem-card:nth-child(5) { animation-delay: 0.5s; }
+    .problem-card:nth-child(6) { animation-delay: 0.6s; }
+    .problem-card:nth-child(7) { animation-delay: 0.7s; }
+
+    .problem-badge {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 50rem;
+      font-weight: 600;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 2rem 0;
+      }
+
+      .problem-icon {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-lightbulb me-2"></i>7 Problèmes Rentables
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#intro">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#problems">Les 7 Problèmes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cas-pratiques">Cas pratiques</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ressources">Ressources</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#quiz">Quiz</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-3">Les 7 types de problèmes à résoudre pour devenir riche</h1>
+      <p class="lead mb-4">Découvrez comment transformer les problèmes en opportunités business rentables</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="#problems" class="btn btn-light btn-lg px-4">Découvrir les 7 problèmes</a>
+        <a href="#cas-pratiques" class="btn btn-outline-light btn-lg px-4">Voir les cas pratiques</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mb-5">
+    <section id="intro" class="mb-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="mb-4">Pourquoi partir des problèmes ?</h2>
+          <p class="lead">La richesse durable vient de la <strong>création de valeur</strong>. Et la valeur vient de la <strong>résolution efficace d'un problème important</strong>. Plus le problème est douloureux, urgent, ou fréquent, plus les gens ou les entreprises seront prêts à payer pour y mettre fin.</p>
+          <div class="d-flex justify-content-center mt-4">
+            <div class="px-4 text-center">
+              <i class="bi bi-emoji-frown fs-1" style="color: var(--problem1);"></i>
+              <p class="mt-2 fw-bold">Problèmes</p>
+            </div>
+            <div class="px-4 text-center">
+              <i class="bi bi-lightbulb fs-1" style="color: var(--problem4);"></i>
+              <p class="mt-2 fw-bold">Solutions</p>
+            </div>
+            <div class="px-4 text-center">
+              <i class="bi bi-cash-coin fs-1" style="color: var(--problem3);"></i>
+              <p class="mt-2 fw-bold">Richesse</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center" style="background-color: var(--primary-color);">
+              <i class="bi bi-question-circle me-2"></i>
+              <h5 class="mb-0">La philosophie</h5>
+            </div>
+            <div class="card-body">
+              <p>Un entrepreneur ou investisseur visionnaire sait <strong>identifier les souffrances</strong> avant les autres, et proposer une solution <strong>efficace, différenciante et scalable</strong>.</p>
+              <div class="highlight-box problem2-highlight mt-3">
+                <p><strong>Pourquoi ces problèmes rendent riches ?</strong></p>
+                <ul>
+                  <li>Ils créent un <strong>besoin fort</strong>, immédiat ou récurrent</li>
+                  <li>Ils donnent une <strong>forte valeur perçue</strong> à la solution</li>
+                  <li>Ils peuvent être <strong>scalables</strong> (à grande échelle)</li>
+                  <li>Ils résistent mal à l'inaction → l'utilisateur agit (et paie)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center" style="background-color: var(--primary-color);">
+              <i class="bi bi-diagram-3 me-2"></i>
+              <h5 class="mb-0">Comment utiliser ce guide</h5>
+            </div>
+            <div class="card-body">
+              <p>Ce portail présente les 7 catégories de problèmes les plus rentables à résoudre. Pour chaque type :</p>
+              <div class="process-step">
+                <h5>1. Comprendre la nature du problème</h5>
+                <p>Qu'est-ce qui le rend spécial ? Pourquoi les gens paieraient pour le résoudre ?</p>
+              </div>
+              <div class="process-step">
+                <h5>2. Voir des exemples concrets</h5>
+                <p>Des cas réels pour inspirer vos propres idées business.</p>
+              </div>
+              <div class="process-step">
+                <h5>3. Découvrir les opportunités</h5>
+                <p>Comment monétiser la résolution de ce type de problème.</p>
+              </div>
+              <div class="process-step">
+                <h5>4. Appliquer à votre contexte</h5>
+                <p>Identifier des problèmes similaires dans votre environnement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problems" class="mb-5">
+      <h2 class="text-center mb-4">Les 7 types de problèmes rentables</h2>
+      
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card h-100 problem1-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-emoji-angry me-2"></i>
+              <h5 class="mb-0">1. Problèmes douloureux</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem1);">Émotion forte</span>
+              <p class="mt-2">Situations qui provoquent une <strong>souffrance physique, mentale ou émotionnelle</strong>. Les gens veulent s'en débarrasser <strong>vite et à tout prix</strong>.</p>
+              <div class="problem1-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Douleurs chroniques (arthrose, migraines, dos)</li>
+                  <li>Stress au travail, burn-out, charge mentale</li>
+                  <li>Solitude chez les personnes âgées</li>
+                  <li>Harcèlement scolaire ou professionnel</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem1 btn-sm mt-3" onclick="showDetails('problem1')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card h-100 problem2-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-alarm me-2"></i>
+              <h5 class="mb-0">2. Problèmes urgents</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem2);">Action immédiate</span>
+              <p class="mt-2">Problèmes qui nécessitent une <strong>action immédiate</strong>. Le temps est critique. L'utilisateur est stressé, prêt à payer une <strong>prime d'urgence</strong>.</p>
+              <div class="problem2-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Panne de serveur ou site e-commerce hors ligne</li>
+                  <li>Fuite de gaz ou d'eau à la maison</li>
+                  <li>Problème de santé nécessitant intervention rapide</li>
+                  <li>Piratage ou perte de données</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem2 btn-sm mt-3" onclick="showDetails('problem2')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card h-100 problem3-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-arrow-repeat me-2"></i>
+              <h5 class="mb-0">3. Problèmes récurrents</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem3);">Répétition</span>
+              <p class="mt-2">Problèmes qui, pris séparément, ne sont pas graves... mais leur <strong>répétition constante devient un fardeau</strong>. Ils minent l'énergie et la productivité.</p>
+              <div class="problem3-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Retards et oublis de facturation ou relance</li>
+                  <li>Bugs dans un logiciel métier</li>
+                  <li>Difficulté à gérer les tâches ménagères</li>
+                  <li>Problèmes de sommeil ou d'organisation</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem3 btn-sm mt-3" onclick="showDetails('problem3')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card h-100 problem4-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-cash-stack me-2"></i>
+              <h5 class="mb-0">4. Problèmes coûteux</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem4);">Pertes financières</span>
+              <p class="mt-2">Problèmes qui <strong>font perdre beaucoup d'argent</strong>, de manière directe ou indirecte. Les utilisateurs sont attentifs à toute solution permettant de réduire ces pertes.</p>
+              <div class="problem4-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Mauvaise gestion de trésorerie ou de budget</li>
+                  <li>Équipements en panne non réparés à temps</li>
+                  <li>Gaspillage d'énergie, mauvaise isolation</li>
+                  <li>Fraude, surfacturation, vol de ressources</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem4 btn-sm mt-3" onclick="showDetails('problem4')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card h-100 problem5-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-puzzle me-2"></i>
+              <h5 class="mb-0">5. Problèmes complexes</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem5);">Expertise</span>
+              <p class="mt-2">Problèmes difficiles à comprendre ou résoudre. Nécessitent <strong>de l'expertise, de l'analyse et souvent une technologie avancée</strong>. Leur résolution peut transformer un marché.</p>
+              <div class="problem5-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Sécurité des données dans le cloud</li>
+                  <li>Optimisation logistique ou supply chain</li>
+                  <li>Détection précoce de maladies via IA</li>
+                  <li>Traitement automatique du langage</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem5 btn-sm mt-3" onclick="showDetails('problem5')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card h-100 problem6-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-people me-2"></i>
+              <h5 class="mb-0">6. Problèmes collectifs</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem6);">Impact social</span>
+              <p class="mt-2">Problèmes qui touchent <strong>des millions de personnes</strong>. Souvent liés aux grands enjeux sociaux, sanitaires ou environnementaux. Attirent des financements publics.</p>
+              <div class="problem6-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Accès à l'eau potable ou à l'éducation</li>
+                  <li>Logement abordable</li>
+                  <li>Pollution plastique ou déchets électroniques</li>
+                  <li>Inégalités d'accès au numérique</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem6 btn-sm mt-3" onclick="showDetails('problem6')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card h-100 problem7-card problem-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-eye-slash me-2"></i>
+              <h5 class="mb-0">7. Problèmes tabous</h5>
+            </div>
+            <div class="card-body">
+              <span class="badge problem-badge" style="background-color: var(--problem7);">Non-dits</span>
+              <p class="mt-2">Problèmes réels mais <strong>sous-estimés ou ignorés</strong> à cause de la honte, de la peur ou du silence. S'y attaquer demande du courage... mais c'est un océan bleu.</p>
+              <div class="problem7-highlight highlight-box">
+                <p><strong>Exemples :</strong></p>
+                <ul>
+                  <li>Hygiène féminine, douleurs menstruelles</li>
+                  <li>Sexualité des seniors ou personnes handicapées</li>
+                  <li>Addictions, violences conjugales</li>
+                  <li>Dépendance aux écrans chez les jeunes</li>
+                </ul>
+              </div>
+              <button class="btn btn-problem7 btn-sm mt-3" onclick="showDetails('problem7')">
+                <i class="bi bi-info-circle me-1"></i>Opportunités business
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cas-pratiques" class="mb-5">
+      <h2 class="text-center mb-4">Cas pratiques</h2>
+      
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card h-100 problem1-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-heart-pulse me-2"></i>
+              <h5 class="mb-0">Soulagement des douleurs</h5>
+            </div>
+            <div class="card-body">
+              <p><strong>Problème :</strong> Douleurs chroniques du dos affectant la qualité de vie.</p>
+              <p><strong>Solution :</strong> Application de thérapie guidée avec capteurs de posture.</p>
+              <p><strong>Business :</strong> Abonnement mensuel + vente de capteurs.</p>
+              <button class="btn btn-problem1 btn-sm mt-2" onclick="showCaseStudy('douleurs')">
+                <i class="bi bi-journal-text me-1"></i>Voir l'étude de cas
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card h-100 problem2-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-lightning-charge me-2"></i>
+              <h5 class="mb-0">Dépannage urgent</h5>
+            </div>
+            <div class="card-body">
+              <p><strong>Problème :</strong> Pannes informatiques en pleine journée de travail.</p>
+              <p><strong>Solution :</strong> Service de dépannage IT en moins de 2h.</p>
+              <p><strong>Business :</strong> Forfait entreprise + tarif urgent.</p>
+              <button class="btn btn-problem2 btn-sm mt-2" onclick="showCaseStudy('depannage')">
+                <i class="bi bi-journal-text me-1"></i>Voir l'étude de cas
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card h-100 problem3-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-calendar-check me-2"></i>
+              <h5 class="mb-0">Automatisation administrative</h5>
+            </div>
+            <div class="card-body">
+              <p><strong>Problème :</strong> Gestion répétitive des factures et relances.</p>
+              <p><strong>Solution :</strong> Logiciel SaaS d'automatisation comptable.</p>
+              <p><strong>Business :</strong> Tarif par nombre de documents traités.</p>
+              <button class="btn btn-problem3 btn-sm mt-2" onclick="showCaseStudy('automatisation')">
+                <i class="bi bi-journal-text me-1"></i>Voir l'étude de cas
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card h-100 problem7-card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-shield-lock me-2"></i>
+              <h5 class="mb-0">Santé intime</h5>
+            </div>
+            <div class="card-body">
+              <p><strong>Problème :</strong> Manque d'informations sur la santé féminine.</p>
+              <p><strong>Solution :</strong> Plateforme éducative anonyme avec experts.</p>
+              <p><strong>Business :</strong> Contenu premium + partenariats marques.</p>
+              <button class="btn btn-problem7 btn-sm mt-2" onclick="showCaseStudy('sante')">
+                <i class="bi bi-journal-text me-1"></i>Voir l'étude de cas
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ressources" class="mb-5">
+      <h2 class="text-center mb-4">Ressources supplémentaires</h2>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">Livres recommandés</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">"The Lean Startup" - Eric Ries</li>
+                <li class="list-group-item">"Start With Why" - Simon Sinek</li>
+                <li class="list-group-item">"The $100 Startup" - Chris Guillebeau</li>
+                <li class="list-group-item">"Blue Ocean Strategy" - W. Chan Kim</li>
+                <li class="list-group-item">"The Mom Test" - Rob Fitzpatrick</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">Outils pour entrepreneurs</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Google Trends (analyse de besoins)</li>
+                <li class="list-group-item">AnswerThePublic (questions des clients)</li>
+                <li class="list-group-item">Canva (design facile)</li>
+                <li class="list-group-item">Notion (organisation)</li>
+                <li class="list-group-item">Stripe (paiements en ligne)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Formations et communautés</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <h6>Identification de problèmes</h6>
+              <ul>
+                <li>Cours "Finding Product-Market Fit"</li>
+                <li>Communauté Indie Hackers</li>
+                <li>Méthode Jobs To Be Done</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6>Validation d'idées</h6>
+              <ul>
+                <li>Formation "The Mom Test"</li>
+                <li>Outils de sondage (Typeform)</li>
+                <li>Landing pages de test</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6>Monétisation</h6>
+              <ul>
+                <li>Cours "Revenue Models"</li>
+                <li>Communauté MicroConf</li>
+                <li>Podcast "The Indie Maker"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="mb-5">
+      <h2 class="text-center mb-4">Quiz d'évaluation</h2>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Testez vos connaissances</h5>
+        </div>
+        <div class="card-body">
+          <p>Évaluez votre compréhension des 7 types de problèmes et votre capacité à identifier des opportunités business.</p>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" onclick="startQuiz()">
+              <i class="bi bi-question-circle me-1"></i>Commencer le quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container text-center">
+      <p class="mb-0">Les 7 types de problèmes à résoudre pour devenir riche</p>
+      <p class="mb-0">© 2023 - Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <!-- Modal for details -->
+  <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModalLabel">Détails</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="detailsModalContent">
+          Chargement...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Modal initialization
+    const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+    const detailsModalTitle = document.getElementById('detailsModalLabel');
+    const detailsModalContent = document.getElementById('detailsModalContent');
+
+    function showDetails(type) {
+      let title = '';
+      let content = '';
+
+      switch(type) {
+        case 'problem1':
+          title = '1. Problèmes douloureux - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Applications de bien-être :</strong> Méditation, thérapie en ligne (ex: Calm, BetterHelp)</li>
+              <li><strong>Produits thérapeutiques :</strong> Équipements ergonomiques, dispositifs de soulagement de la douleur</li>
+              <li><strong>Plateformes de soutien :</strong> Communautés d'entraide, services d'écoute professionnelle</li>
+              <li><strong>Services de santé accessibles :</strong> Téléconsultation, suivi médical à distance</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p><strong>L'écoute empathique</strong> est cruciale. Les clients doivent sentir que vous comprenez réellement leur souffrance.</p>
+              <p class="mb-0">Fournissez des <strong>preuves tangibles</strong> que votre solution soulage effectivement le problème (témoignages, études, démonstrations).</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Les migraines chroniques qui gâchent la vie professionnelle et personnelle.</p>
+            <p><strong>Solution :</strong> Un dispositif médical portable utilisant la neurostimulation pour prévenir et soulager les migraines.</p>
+            <p><strong>Business model :</strong> Vente du dispositif + abonnement pour l'accès à des thérapies personnalisées dans l'appli compagnon.</p>
+          `;
+          break;
+          
+        case 'problem2':
+          title = '2. Problèmes urgents - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Services d'urgence 24h/24 :</strong> Plomberie, dépannage IT, serrurerie, assistance médicale</li>
+              <li><strong>Logiciels de gestion de crise :</strong> Outils pour restaurer rapidement les systèmes</li>
+              <li><strong>Plateformes d'assistance immédiate :</strong> Téléconsultation médicale, support technique prioritaire</li>
+              <li><strong>Solutions de sauvegarde :</strong> Récupération de données, systèmes redondants</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p>La <strong>réactivité extrême</strong> est votre principal argument de vente. Garantissez des temps de réponse records.</p>
+              <p class="mb-0">Proposez des <strong>forfaits préventifs</strong> (abonnements) en plus des tarifs d'urgence pour fidéliser.</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Les entreprises dont le site e-commerce tombe en panne pendant les pics de vente.</p>
+            <p><strong>Solution :</strong> Service premium de surveillance et réparation express des sites e-commerce, avec garantie de rétablissement en moins de 1h.</p>
+            <p><strong>Business model :</strong> Abonnement mensuel + tarif majoré pour les interventions urgentes.</p>
+          `;
+          break;
+          
+        case 'problem3':
+          title = '3. Problèmes récurrents - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Automatisation des tâches :</strong> Outils RPA, connecteurs entre logiciels (Zapier, Make)</li>
+              <li><strong>Applications de productivité :</strong> Gestion des habitudes, organisation personnelle</li>
+              <li><strong>Services récurrents :</strong> Ménage, courses, jardinage, administration déléguée</li>
+              <li><strong>Abonnements pratiques :</strong> Fournitures de bureau, produits ménagers automatiquement renouvelés</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p>Transformez un problème récurrent en <strong>expérience fluide ou invisible</strong> pour l'utilisateur.</p>
+              <p class="mb-0">Les modèles d'<strong>abonnement</strong> fonctionnent particulièrement bien pour ce type de problèmes.</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Les freelancers qui oublient de relancer leurs clients pour les paiements en retard.</p>
+            <p><strong>Solution :</strong> Un logiciel qui suit automatiquement les factures impayées et envoie des relances personnalisées.</p>
+            <p><strong>Business model :</strong> Pourcentage sur les sommes récupérées ou abonnement mensuel.</p>
+          `;
+          break;
+          
+        case 'problem4':
+          title = '4. Problèmes coûteux - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Optimisation financière :</strong> Logiciels de gestion budgétaire, détection des gaspillages</li>
+              <li><strong>Maintenance prédictive :</strong> Solutions IoT pour anticiper les pannes coûteuses</li>
+              <li><strong>Économies d'énergie :</strong> Audit et optimisation de la consommation</li>
+              <li><strong>Prévention des fraudes :</strong> Détection des anomalies financières en temps réel</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p>Prouvez que votre solution permet une <strong>économie mesurable</strong>. Fournissez des calculs ROI clairs.</p>
+              <p class="mb-0">Ciblez les décideurs financiers avec des arguments <strong>chiffrés et tangibles</strong>.</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Les restaurants qui jettent des quantités importantes de nourriture invendue.</p>
+            <p><strong>Solution :</strong> Un système d'IA qui prédit les ventes et optimise les commandes aux fournisseurs.</p>
+            <p><strong>Business model :</strong> Pourcentage sur les économies réalisées ou licence logicielle.</p>
+          `;
+          break;
+          
+        case 'problem5':
+          title = '5. Problèmes complexes - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Solutions deep tech :</strong> IA, blockchain, biotech, quantique</li>
+              <li><strong>Conseil expert :</strong> Audit et optimisation de processus complexes</li>
+              <li><strong>Logiciels spécialisés :</strong> Outils B2B pour des métiers techniques</li>
+              <li><strong>Formation avancée :</strong> Certifications sur des sujets pointus</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p>Transformez une solution technique complexe en <strong>outil simple à utiliser</strong> pour le client final.</p>
+              <p class="mb-0">La <strong>valeur perçue</strong> doit être immédiatement compréhensible, même si la technologie sous-jacente est complexe.</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Les PME n'ont pas les ressources pour optimiser leur chaîne logistique comme les grandes entreprises.</p>
+            <p><strong>Solution :</strong> Un logiciel SaaS qui utilise l'IA pour optimiser automatiquement les stocks et les livraisons.</p>
+            <p><strong>Business model :</strong> Abonnement mensuel basé sur le volume traité.</p>
+          `;
+          break;
+          
+        case 'problem6':
+          title = '6. Problèmes collectifs - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Startups à impact :</strong> Solutions pour le climat, l'éducation, la santé globale</li>
+              <li><strong>Technologies frugales :</strong> Produits low-cost pour les populations défavorisées</li>
+              <li><strong>Modèles hybrides :</strong> Combinaison de revenus commerciaux et de financements publics</li>
+              <li><strong>Plateformes collaboratives :</strong> Mise en relation de bénévoles, donateurs et bénéficiaires</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p>Conciliez <strong>impact social/environnemental</strong> et <strong>modèle économique durable</strong>.</p>
+              <p class="mb-0">Explorez les <strong>financements alternatifs</strong> : subventions, crowdfunding, impact investing.</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Des millions de personnes n'ont pas accès à une eau potable de qualité.</p>
+            <p><strong>Solution :</strong> Un filtre à eau portable et low-cost, fabriqué localement dans les pays en développement.</p>
+            <p><strong>Business model :</strong> Vente directe + modèle "buy one give one" + subventions.</p>
+          `;
+          break;
+          
+        case 'problem7':
+          title = '7. Problèmes tabous - Opportunités business';
+          content = `
+            <h5>Opportunités business :</h5>
+            <ul>
+              <li><strong>Santé intime :</strong> Produits innovants pour l'hygiène féminine, la sexualité</li>
+              <li><strong>Plateformes anonymes :</strong> Espaces sécurisés pour discuter de sujets sensibles</li>
+              <li><strong>Services confidentiels :</strong> Thérapie en ligne, soutien aux victimes de violence</li>
+              <li><strong>Éducation discrète :</strong> Contenus pédagogiques accessibles en privé</li>
+            </ul>
+            
+            <h5 class="mt-4">Clés de succès :</h5>
+            <div class="alert alert-info">
+              <p>Abordez les tabous avec <strong>respect, éthique et discrétion</strong>. La confiance est cruciale.</p>
+              <p class="mb-0">Utilisez un <strong>marketing subtil</strong> qui respecte la sensibilité du public cible.</p>
+            </div>
+            
+            <h5 class="mt-4">Exemple concret :</h5>
+            <p><strong>Problème :</strong> Les femmes n'osent pas parler de leurs douleurs menstruelles ou problèmes gynécologiques.</p>
+            <p><strong>Solution :</strong> Une appli avec diagnostic anonyme, conseils de professionnels et communauté bienveillante.</p>
+            <p><strong>Business model :</strong> Contenu premium + partenariats avec marques spécialisées.</p>
+          `;
+          break;
+          
+        default:
+          title = 'Détails non disponibles';
+          content = `
+            <div class="alert alert-warning">
+              <p>Les détails pour cette section ne sont pas encore disponibles.</p>
+              <p class="mb-0">Cette fonctionnalité est en cours de développement.</p>
+            </div>
+          `;
+      }
+
+      detailsModalTitle.textContent = title;
+      detailsModalContent.innerHTML = content;
+      detailsModal.show();
+    }
+
+    function showCaseStudy(caseId) {
+      let title = '';
+      let content = '';
+
+      switch(caseId) {
+        case 'douleurs':
+          title = 'Cas pratique : Soulagement des douleurs chroniques';
+          content = `
+            <h5>Contexte :</h5>
+            <p>Les douleurs chroniques du dos affectent des millions de personnes, réduisant leur qualité de vie et leur productivité. Les solutions existantes (médicaments, kiné) sont souvent coûteuses et pas toujours efficaces.</p>
+            
+            <h5 class="mt-4">Solution innovante :</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>Produit :</strong> "PostureGuard" - Un dispositif portable combinant :</p>
+                <ul>
+                  <li>Capteurs de posture en temps réel</li>
+                  <li>Vibrations correctives discrètes</li>
+                  <li>Application mobile avec exercices personnalisés</li>
+                  <li>Tableau de bord pour le suivi des progrès</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <img src="https://via.placeholder.com/300x200?text=PostureGuard+Device" class="img-fluid mb-3">
+              </div>
+            </div>
+            
+            <h5 class="mt-4">Business model :</h5>
+            <ul>
+              <li><strong>Vente du dispositif :</strong> 199€ (coût de production : 60€)</li>
+              <li><strong>Abonnement premium :</strong> 15€/mois pour des programmes avancés et coaching</li>
+              <li><strong>Partenariats :</strong> Avec des mutuelles et entreprises pour des tarifs groupés</li>
+            </ul>
+            
+            <h5 class="mt-4">Résultats :</h5>
+            <div class="alert alert-success">
+              <p>Après 2 ans sur le marché :</p>
+              <ul>
+                <li>25 000 dispositifs vendus</li>
+                <li>40% de taux de conversion vers l'abonnement</li>
+                <li>Réduction moyenne de 68% des douleurs rapportées par les utilisateurs</li>
+                <li>Prix "Innovation Santé 2023"</li>
+              </ul>
+            </div>
+            
+            <h5 class="mt-4">Leçons clés :</h5>
+            <ol>
+              <li>Les problèmes physiques douloureux créent une forte volonté d'achat</li>
+              <li>Combiner hardware et software permet des revenus récurrents</li>
+              <li>Les témoignages vidéo de patients sont le meilleur marketing</li>
+            </ol>
+          `;
+          break;
+          
+        case 'depannage':
+          title = 'Cas pratique : Dépannage IT urgent pour entreprises';
+          content = `
+            <h5>Contexte :</h5>
+            <p>Les petites entreprises n'ont souvent pas de service IT interne. Quand un problème technique survient (email down, site hors ligne, virus), cela peut paralyser toute leur activité, avec des pertes financières importantes.</p>
+            
+            <h5 class="mt-4">Solution innovante :</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>Service :</strong> "TechGuard 24/7" - Un service premium de dépannage IT avec :</p>
+                <ul>
+                  <li>Intervention à distance en moins de 30 minutes</li>
+                  <li>Déplacement sur site en moins de 2h (dans les grandes villes)</li>
+                  <li>Techniciens certifiés et vérifiés</li>
+                  <li>Forfaits préventifs pour les clients réguliers</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <img src="https://via.placeholder.com/300x200?text=TechGuard+Service" class="img-fluid mb-3">
+              </div>
+            </div>
+            
+            <h5 class="mt-4">Business model :</h5>
+            <ul>
+              <li><strong>Forfait préventif :</strong> 99€/mois pour 2 interventions incluses</li>
+              <li><strong>Tarif urgent :</strong> 199€ la première heure puis 99€/h</li>
+              <li><strong>Contrats entreprises :</strong> Tarifs dégressifs selon la taille</li>
+            </ul>
+            
+            <h5 class="mt-4">Résultats :</h5>
+            <div class="alert alert-success">
+              <p>Après 18 mois d'activité :</p>
+              <ul>
+                <li>120 clients sous forfait mensuel</li>
+                <li>3-5 interventions urgentes par jour</li>
+                <li>92% de satisfaction client</li>
+                <li>Marge de 65% sur les forfaits</li>
+              </ul>
+            </div>
+            
+            <h5 class="mt-4">Leçons clés :</h5>
+            <ol>
+              <li>Les clients en situation d'urgence acceptent des tarifs élevés</li>
+              <li>La rapidité de réponse est le critère n°1 de choix</li>
+              <li>Convertir les clients urgents en abonnés permet de lisser les revenus</li>
+            </ol>
+          `;
+          break;
+          
+        default:
+          title = 'Cas pratique non trouvé';
+          content = `
+            <div class="alert alert-warning">
+              <p>Le cas pratique demandé n'est pas encore disponible dans notre base de données.</p>
+              <p class="mb-0">Nous travaillons à ajouter continuellement de nouveaux cas pratiques.</p>
+            </div>
+          `;
+      }
+
+      detailsModalTitle.textContent = title;
+      detailsModalContent.innerHTML = content;
+      detailsModal.show();
+    }
+
+    function startQuiz() {
+      alert('Le système de quiz sera implémenté dans une prochaine version !');
+    }
+  </script>
+</body>
+</html>
